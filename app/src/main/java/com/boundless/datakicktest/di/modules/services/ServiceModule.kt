@@ -1,6 +1,6 @@
-package com.boundless.risingtides.di.modules.services
+package com.boundless.datakicktest.di.modules.services
 
-import com.boundless.datakicktest.di.modules.services.ExampleServiceModule
+import com.boundless.datakicktest.di.modules.services.DataKickServiceModule
 import dagger.Module
 import dagger.Provides
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -8,7 +8,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 @Module(
     includes = [
-      ExampleServiceModule::class
+      DataKickServiceModule::class
     ]
 )
 class ServiceModule {

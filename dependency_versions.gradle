@@ -29,6 +29,6 @@ ext {
     rxRelay = '2.0.0'
 
     junitVersion = '4.12'
-    mockKVersion = '1.7.15'
+    mockKVersion = '1.7.17'
     kluentVersion = '1.15'
 }

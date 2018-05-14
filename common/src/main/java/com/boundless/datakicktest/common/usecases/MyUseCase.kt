@@ -1,7 +1,7 @@
 package com.boundless.datakicktest.common.usecases
 
-import com.boundless.datakicktest.common.entities.AndroidStarter
+import com.boundless.datakicktest.common.entities.Book
 
-fun AndroidStarter.doSomething(): AndroidStarter {
-  return AndroidStarter("use cased hello")
+fun Book.doSomething(): Book {
+  return Book("use cased hello", "", "")
 }

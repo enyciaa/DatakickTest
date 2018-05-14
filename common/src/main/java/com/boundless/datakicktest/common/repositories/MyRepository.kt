@@ -1,16 +1,16 @@
 package com.boundless.datakicktest.common.repositories
 
-import com.boundless.datakicktest.common.entities.AndroidStarter
+import com.boundless.datakicktest.common.entities.Book
 
 class MyRepository {
 
-  private var cachedValue: AndroidStarter? = null
+  private var cachedValue: Book? = null
 
-  fun fetchValue(): AndroidStarter {
-    return cachedValue ?: AndroidStarter("hello")
+  fun fetchValue(): Book {
+    return cachedValue ?: Book("hello", "", "")
   }
 
-  fun saveValue(value: AndroidStarter) {
+  fun saveValue(value: Book) {
     cachedValue = value
   }
 }

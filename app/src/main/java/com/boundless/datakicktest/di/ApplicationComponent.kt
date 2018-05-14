@@ -8,7 +8,7 @@ import com.boundless.datakicktest.di.modules.ThreadingModule
 import com.boundless.datakicktest.di.modules.TurtleModule
 import com.boundless.datakicktest.di.ui.modules.UiModule
 import com.boundless.elephant.libraryhelpers.dagger.PerApplication
-import com.boundless.risingtides.di.modules.services.ServiceModule
+import com.boundless.datakicktest.di.modules.services.ServiceModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule

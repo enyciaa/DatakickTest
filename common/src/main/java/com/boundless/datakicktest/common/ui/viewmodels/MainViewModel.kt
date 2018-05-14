@@ -17,7 +17,7 @@ class MainViewModel(
     super.onAttach()
     mainModel.fetchValue()
         .subscribe(
-            { emitViewState(lastViewState.copy(hello = it.helloWorld)) },
+            { emitViewState(lastViewState.copy(hello = it.id)) },
             {}
         )
   }

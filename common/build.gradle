@@ -1,4 +1,5 @@
 apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
 
 apply from: '../gradle/config/common_java_library_block.gradle'
 

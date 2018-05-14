@@ -1,0 +1,34 @@
+package com.boundless.datakicktest.common.services.datakick
+
+import com.boundless.datakicktest.common.entities.Book
+import com.boundless.datakicktest.common.entities.FoodItem
+import com.boundless.datakicktest.common.entities.Product
+import com.boundless.datakicktest.common.services.datakick.entities.RawDataKickResponse
+
+fun List<RawDataKickResponse>.mapToProducts(): List<Product> {
+  return map {
+    when {
+      it.isFoodItem() -> it.mapToFoodItem()
+      it.isBook() -> it.mapToBook()
+      else -> null
+    }
+  }.filterNotNull()
+}
+
+private fun RawDataKickResponse.isFoodItem(): Boolean = brandName != null
+
+private fun RawDataKickResponse.isBook(): Boolean = publisher != null
+
+private fun RawDataKickResponse.mapToFoodItem(): FoodItem = FoodItem(
+    gtin14.orEmpty(),
+    name.orEmpty(),
+    brandName.orEmpty()
+)
+
+private fun RawDataKickResponse.mapToBook(): Book = Book(
+    gtin14.orEmpty(),
+    name.orEmpty(),
+    publisher.orEmpty()
+)
+
+private fun String?.orEmpty(): String = this ?: ""
