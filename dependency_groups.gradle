@@ -1,0 +1,24 @@
+ext {
+    networkingDependencies = [
+            "com.squareup.retrofit2:retrofit:${retrofit2Version}",
+            "com.squareup.okhttp3:okhttp:${okhttp3Version}",
+            "com.squareup.moshi:moshi:${moshiVersion}",
+            "com.squareup.moshi:moshi-kotlin:${moshiVersion}",
+            "com.squareup.retrofit2:adapter-rxjava2:${retrofit2Version}",
+            "com.squareup.retrofit2:converter-moshi:${retrofit2Version}"
+    ]
+
+    rxJavaDependencies = [
+            "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            "com.jakewharton.rxrelay2:rxrelay:${rxRelay}"
+    ]
+
+    javaTestingDependencies = [
+            "org.jetbrains.kotlin:kotlin-test:${kotlinVersion}",
+            "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
+            "io.mockk:mockk:${mockKVersion}",
+            "org.amshove.kluent:kluent:${kluentVersion}"
+    ]
+}

@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+apply from: '../gradle/config/common_android_library_block.gradle'
+
+android {
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation(project(':common'))
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
+    implementation "com.github.enyciaa:Turtle:${turtleVersion}"
+    implementation rxJavaDependencies
+
+    implementation "com.google.dagger:dagger-android:${daggerVersion}"
+
+    implementation "com.android.support:support-v4:${androidSupportVersion}"
+    implementation "com.android.support:appcompat-v7:${androidSupportVersion}"
+    implementation "com.android.support:support-v13:${androidSupportVersion}"
+    implementation "com.android.support:design:${androidSupportVersion}"
+    implementation "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
+
+    implementation "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:${bindingCollectionAdapterVersion}"
+    implementation "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:${bindingCollectionAdapterVersion}"
+    implementation "jp.wasabeef:recyclerview-animators:${recyclerViewAnimatiorsVersion}"
+
+    testImplementation javaTestingDependencies
+}
