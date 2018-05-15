@@ -1,6 +1,6 @@
 package com.boundless.datakicktest.common.services.datakick
 
-import com.boundless.datakicktest.aRawDataKickResponseBuilder
+import com.boundless.datakicktest.testinfastructure.aRawDataKickResponseBuilder
 import com.boundless.datakicktest.common.entities.Book
 import com.boundless.datakicktest.common.entities.FoodItem
 import org.amshove.kluent.shouldBeInstanceOf

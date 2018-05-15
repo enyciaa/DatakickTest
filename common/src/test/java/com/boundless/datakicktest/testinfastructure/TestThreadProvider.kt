@@ -1,4 +1,4 @@
-package com.boundless.datakicktest
+package com.boundless.datakicktest.testinfastructure
 
 import com.boundless.elephant.threading.ThreadProvider
 import io.reactivex.Scheduler

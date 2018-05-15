@@ -1,7 +1,7 @@
 package com.boundless.datakicktest.common.services.datakick
 
-import com.boundless.datakicktest.aFoodItemBuilder
-import com.boundless.datakicktest.aRawDataKickResponseBuilder
+import com.boundless.datakicktest.testinfastructure.aFoodItemBuilder
+import com.boundless.datakicktest.testinfastructure.aRawDataKickResponseBuilder
 import com.boundless.datakicktest.common.entities.Product
 import com.boundless.datakicktest.common.services.datakick.entities.RawDataKickResponse
 import io.mockk.every

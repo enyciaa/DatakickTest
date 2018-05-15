@@ -1,4 +1,4 @@
-package com.boundless.datakicktest
+package com.boundless.datakicktest.testinfastructure
 
 import com.boundless.datakicktest.common.services.datakick.entities.RawDataKickResponse
 

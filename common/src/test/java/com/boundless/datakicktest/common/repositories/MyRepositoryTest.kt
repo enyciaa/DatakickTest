@@ -1,6 +1,6 @@
 package com.boundless.datakicktest.common.repositories
 
-import com.boundless.datakicktest.aFoodItemBuilder
+import com.boundless.datakicktest.testinfastructure.aFoodItemBuilder
 import com.boundless.datakicktest.common.entities.Product
 import com.boundless.datakicktest.common.services.datakick.DataKickService
 import io.mockk.every

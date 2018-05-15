@@ -1,6 +1,8 @@
 package com.boundless.datakicktest.common.ui.viewmodels
 
+import com.boundless.datakicktest.common.entities.Book
 import com.boundless.datakicktest.common.ui.model.MainModel
+import com.boundless.datakicktest.common.ui.states.MainViewState
 import com.jakewharton.rxrelay2.BehaviorRelay
 import io.reactivex.Observable
 
@@ -15,9 +17,9 @@ class MainViewModel(
 
   override fun onAttach() {
     super.onAttach()
-    mainModel.fetchValue()
+    mainModel.fetchProducts()
         .subscribe(
-            { emitViewState(lastViewState.copy(hello = it.id)) },
+            { emitViewState(lastViewState.copy(hello = (it as Book).name)) },
             {}
         )
   }

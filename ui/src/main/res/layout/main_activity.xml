@@ -7,7 +7,7 @@
 
     <data>
 
-        <variable name="viewState" type="com.boundless.datakicktest.common.ui.viewmodels.MainViewState"/>
+        <variable name="viewState" type="com.boundless.datakicktest.common.ui.states.MainViewState"/>
         <variable name="viewModel" type="com.boundless.datakicktest.common.ui.viewmodels.MainViewModel"/>
 
     </data>

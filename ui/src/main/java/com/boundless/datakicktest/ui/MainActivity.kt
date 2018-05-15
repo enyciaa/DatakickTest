@@ -6,7 +6,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import com.boundless.datakicktest.common.ui.viewmodels.LifecycleReceiver
 import com.boundless.datakicktest.common.ui.viewmodels.MainViewModel
-import com.boundless.datakicktest.common.ui.viewmodels.MainViewState
+import com.boundless.datakicktest.common.ui.states.MainViewState
 import com.boundless.datakicktest.ui.databinding.MainActivityBinding
 import javax.inject.Inject
 
