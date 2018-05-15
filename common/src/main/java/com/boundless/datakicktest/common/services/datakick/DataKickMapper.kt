@@ -16,28 +16,30 @@ fun List<RawDataKickResponse>.mapToProducts(): List<Product> {
 }
 
 private fun RawDataKickResponse.isFoodItem(): Boolean =
-    brandName != null
+    name != null && brand_name != null
 
 private fun RawDataKickResponse.isBook(): Boolean =
-    publisher != null && author != null
+    name != null && publisher != null && author != null
 
-private fun RawDataKickResponse.mapToFoodItem(): FoodItem = FoodItem(
-    gtin14.orEmpty(),
-    name.orEmpty(),
-    brandName.orEmpty(),
-    size.orEmpty(),
-    servingSize.orEmpty(),
-    servingsPerContainer.orEmpty()
-)
+private fun RawDataKickResponse.mapToFoodItem(): FoodItem =
+    FoodItem(
+        gtin14.orEmpty(),
+        name.orEmpty(),
+        brand_name.orEmpty(),
+        size.orEmpty(),
+        serving_size.orEmpty(),
+        servings_per_container.orEmpty()
+    )
 
-private fun RawDataKickResponse.mapToBook(): Book = Book(
-    gtin14.orEmpty(),
-    name.orEmpty(),
-    publisher.orEmpty(),
-    author.orEmpty(),
-    pages.orZero(),
-    format.orEmpty()
-)
+private fun RawDataKickResponse.mapToBook(): Book =
+    Book(
+        gtin14.orEmpty(),
+        name.orEmpty(),
+        publisher.orEmpty(),
+        author.orEmpty(),
+        pages.orZero(),
+        format.orEmpty()
+    )
 
 private fun String?.orEmpty(): String = this ?: ""
 
