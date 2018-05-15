@@ -18,7 +18,11 @@ fun List<Product>.mapToProductViewStates(): List<ProductViewState> =
 
 private fun FoodItem.mapToFoodItemViewState(): FoodItemViewState =
     FoodItemViewState(
-        name
+        name,
+        brandName,
+        size,
+        servingSize,
+        servingsPerContainer
     )
 
 private fun Book.mapToBookItemViewState(): BookItemViewState =

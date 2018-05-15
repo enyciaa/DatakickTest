@@ -22,7 +22,7 @@ class MainActivity : MotherActivity() {
 
   private val listItemBinding: OnItemBind<ProductViewState> = OnItemBind { itemBinding, _, item ->
     when (item) {
-      is FoodItemViewState -> itemBinding.set(BR.viewState, R.layout.food_item)
+      is FoodItemViewState -> itemBinding.set(BR.viewState, R.layout.foods_item)
       is BookItemViewState -> itemBinding.set(BR.viewState, R.layout.book_item)
       else -> { /* Do nothing */ }
     }

@@ -21,7 +21,10 @@ class FoodItemBuilder {
   fun build() = FoodItem(
       id,
       name,
-      brandName
+      brandName,
+      "",
+      "",
+      ""
   )
 }
 
