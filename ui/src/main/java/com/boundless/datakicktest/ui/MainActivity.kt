@@ -4,10 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import com.boundless.datakicktest.common.ui.states.BookItemViewState
+import com.boundless.datakicktest.common.ui.states.FoodItemViewState
+import com.boundless.datakicktest.common.ui.states.MainViewState
+import com.boundless.datakicktest.common.ui.states.ProductViewState
 import com.boundless.datakicktest.common.ui.viewmodels.LifecycleReceiver
 import com.boundless.datakicktest.common.ui.viewmodels.MainViewModel
-import com.boundless.datakicktest.common.ui.states.MainViewState
 import com.boundless.datakicktest.ui.databinding.MainActivityBinding
+import me.tatarka.bindingcollectionadapter2.OnItemBind
 import javax.inject.Inject
 
 class MainActivity : MotherActivity() {
@@ -16,6 +20,14 @@ class MainActivity : MotherActivity() {
 
   private lateinit var binding: MainActivityBinding
 
+  private val listItemBinding: OnItemBind<ProductViewState> = OnItemBind { itemBinding, _, item ->
+    when (item) {
+      is FoodItemViewState -> itemBinding.set(BR.viewState, R.layout.food_item)
+      is BookItemViewState -> itemBinding.set(BR.viewState, R.layout.book_item)
+      else -> { /* Do nothing */ }
+    }
+  }
+
   companion object {
     fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
   }
@@ -23,7 +35,7 @@ class MainActivity : MotherActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
-    binding.viewModel = viewModel
+    binding.listItemBinding = listItemBinding
     setSupportActionBar(binding.toolbar)
   }
 
