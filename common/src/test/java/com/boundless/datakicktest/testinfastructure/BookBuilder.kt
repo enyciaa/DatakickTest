@@ -21,7 +21,10 @@ class BookBuilder {
   fun build() = Book(
       id,
       name,
-      publisher
+      publisher,
+      "",
+      0,
+      ""
   )
 }
 

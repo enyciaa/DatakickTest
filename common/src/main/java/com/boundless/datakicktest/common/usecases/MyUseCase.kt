@@ -4,5 +4,5 @@ import com.boundless.datakicktest.common.entities.Book
 import com.boundless.datakicktest.common.entities.Product
 
 fun List<Product>.doSomething(): Book {
-  return Book("use cased hello", "", "")
+  return Book("use cased hello", "", "", "", 0, "")
 }

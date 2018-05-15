@@ -17,14 +17,19 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/common_margin"
+        android:layout_marginLeft="@dimen/common_margin"
+        android:layout_marginRight="@dimen/common_margin"
+        android:layout_marginTop="@dimen/common_half_item_spacing"
+        android:layout_marginBottom="@dimen/common_half_item_spacing"
         card_view:cardCornerRadius="4dp"
         >
 
-        <android.support.constraint.ConstraintLayout
+        <LinearLayout
             android:id="@+id/contentContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
             android:layout_margin="@dimen/common_margin"
             >
 
@@ -32,12 +37,49 @@
                 android:id="@+id/bookName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:textAppearance="@style/BoundlessTitleText"
                 android:text="@{viewState.name}"
                 tools:text="title"
                 />
 
-        </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/BoundlessBodyText"
+                android:text="@{viewState.author}"
+                tools:text="title"
+                />
+
+            <TextView
+                android:id="@+id/bookType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/BoundlessBodyText"
+                android:text="@{viewState.bookType}"
+                tools:text="title"
+                />
+
+            <TextView
+                android:id="@+id/pages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/BoundlessBodyText"
+                android:text="@{viewState.numberOfPage}"
+                tools:text="title"
+                />
+
+            <TextView
+                android:id="@+id/publisher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/BoundlessBodyText"
+                android:text="@{viewState.publisher}"
+                tools:text="title"
+                />
+
+        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 

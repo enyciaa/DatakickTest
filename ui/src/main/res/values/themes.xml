@@ -3,9 +3,9 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Window -->
-        <item name="android:statusBarColor">@color/accent</item>
-        <item name="android:navigationBarColor">@color/accent</item>
-        <item name="android:windowBackground">@color/primary</item>
+        <item name="android:statusBarColor">@color/primaryDark</item>
+        <item name="android:navigationBarColor">@color/primaryDark</item>
+        <item name="android:windowBackground">@color/white_100a</item>
 
         <!-- Main theme colors -->
         <item name="colorPrimary">@color/primary</item>
