@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">DataKickTest</string>
-    <string name="home_screen_title">Home</string>
+    <string name="home_screen_title">Products</string>
+    <string name="filter_by_books">Filter by Books</string>
+    <string name="filter_by_food">Filter by Food</string>
+    <string name="show_all">Show All</string>
 </resources>

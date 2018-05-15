@@ -4,6 +4,7 @@
     <!-- FONT SIZES -->
     <dimen name="text_title">18sp</dimen>
     <dimen name="text_body">15sp</dimen>
+    <dimen name="text_caption">12sp</dimen>
 
     <!-- MARGINS & GUTTERS-->
     <dimen name="common_margin">16dp</dimen>
