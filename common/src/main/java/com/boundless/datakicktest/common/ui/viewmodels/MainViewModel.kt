@@ -16,14 +16,31 @@ class MainViewModel(
 
   override fun onAttach() {
     super.onAttach()
-    mainModel.fetchProducts()
+    showAllProducts()
+  }
+
+  fun filterByBooks() {
+    mainModel.fetchBooks()
         .subscribe(
             { emitViewState(lastViewState.copy(products = it)) },
             {  }
         )
   }
 
-  fun onButtonClick() {
+  fun filterByFood() {
+    mainModel.fetchFood()
+        .subscribe(
+            { emitViewState(lastViewState.copy(products = it)) },
+            {  }
+        )
+  }
+
+  fun showAllProducts() {
+    mainModel.fetchProducts()
+        .subscribe(
+            { emitViewState(lastViewState.copy(products = it)) },
+            {  }
+        )
   }
 
   private fun emitViewState(newViewState: MainViewState) {

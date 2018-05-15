@@ -37,6 +37,10 @@ class MainActivity : MotherActivity() {
     binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
     binding.listItemBinding = listItemBinding
     setSupportActionBar(binding.toolbar)
+
+    binding.filterByBooks.setOnClickListener { viewModel.filterByBooks() }
+    binding.filterByFood.setOnClickListener { viewModel.filterByFood() }
+    binding.showAll.setOnClickListener { viewModel.showAllProducts() }
   }
 
   override fun provideLifecycleReceivers(): List<LifecycleReceiver> = listOf(viewModel)
