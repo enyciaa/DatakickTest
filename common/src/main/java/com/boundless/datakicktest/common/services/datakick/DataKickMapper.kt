@@ -16,10 +16,10 @@ fun List<RawDataKickResponse>.mapToProducts(): List<Product> {
 }
 
 private fun RawDataKickResponse.isFoodItem(): Boolean =
-    brandName != null || size != null || servingSize != null || servingsPerContainer != null
+    brandName != null
 
 private fun RawDataKickResponse.isBook(): Boolean =
-    publisher != null || author != null || format != null
+    publisher != null && author != null
 
 private fun RawDataKickResponse.mapToFoodItem(): FoodItem = FoodItem(
     gtin14.orEmpty(),

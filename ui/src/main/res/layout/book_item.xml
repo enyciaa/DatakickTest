@@ -53,6 +53,15 @@
                 />
 
             <TextView
+                android:id="@+id/publisher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/BoundlessBodyText"
+                android:text="@{viewState.publisher}"
+                tools:text="title"
+                />
+
+            <TextView
                 android:id="@+id/bookType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,15 +76,6 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/BoundlessBodyText"
                 android:text="@{viewState.numberOfPage}"
-                tools:text="title"
-                />
-
-            <TextView
-                android:id="@+id/publisher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/BoundlessBodyText"
-                android:text="@{viewState.publisher}"
                 tools:text="title"
                 />
 
