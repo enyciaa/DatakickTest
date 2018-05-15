@@ -1,6 +1,6 @@
 package com.boundless.datakicktest.di.ui.modules
 
-import com.boundless.datakicktest.common.repositories.MyRepository
+import com.boundless.datakicktest.common.repositories.ProductsRepository
 import com.boundless.datakicktest.common.ui.model.MainModel
 import com.boundless.elephant.threading.ThreadProvider
 import dagger.Module
@@ -12,7 +12,7 @@ class ModelModule {
   @Provides
   fun provideMainModel(
       threadProvider: ThreadProvider,
-      myRepository: MyRepository
+      productsRepository: ProductsRepository
   ): MainModel =
-      MainModel(threadProvider, myRepository)
+      MainModel(threadProvider, productsRepository)
 }

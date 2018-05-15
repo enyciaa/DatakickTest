@@ -7,7 +7,7 @@ class DataKickService(
     private val dataKickApi: DataKickApi
 ) {
 
-  fun fetchItems(): Single<List<Product>> =
+  fun fetchProducts(): Single<List<Product>> =
     dataKickApi.fetchItems()
         .map { it.mapToProducts() }
 

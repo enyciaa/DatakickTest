@@ -1,5 +1,6 @@
 package com.boundless.datakicktest.di.modules.services
 
+import com.boundless.datakicktest.common.services.datakick.DATA_KICK_BASE_URL
 import com.boundless.datakicktest.common.services.datakick.DataKickApi
 import com.boundless.datakicktest.common.services.datakick.DataKickService
 import dagger.Module
@@ -22,10 +23,10 @@ class DataKickServiceModule {
 
   @Provides
   @Named(DATA_KICK_SERVICE_NAMED_BASE_URL)
-  fun provideDataKickServiceBaseUrl() = DATA_KICK_SERVICE_NAMED_BASE_URL
+  fun provideDataKickServiceBaseUrl() = DATA_KICK_BASE_URL
 
   @Provides
-  fun provideElevationApi(
+  fun provideDataKickApi(
       @Named(DATA_KICK_SERVICE_NAMED_BASE_URL) baseUrl: String,
       jsonConverter: MoshiConverterFactory,
       callAdapter: RxJava2CallAdapterFactory

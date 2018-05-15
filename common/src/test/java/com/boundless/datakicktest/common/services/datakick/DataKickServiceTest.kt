@@ -10,7 +10,7 @@ import io.reactivex.Single
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-class ServiceTest {
+class DataKickServiceTest {
 
   private val dataKickApi: DataKickApi = mockk()
   private val service = DataKickService(dataKickApi)
@@ -23,7 +23,7 @@ class ServiceTest {
     every { dataKickApi.fetchItems() } returns Single.just(apiResults)
     val expectedResult: List<Product> = listOf(aFoodItemBuilder().withBrandName(brandName).build())
 
-    val result = service.fetchItems().blockingGet()
+    val result = service.fetchProducts().blockingGet()
 
     result shouldEqual expectedResult
   }

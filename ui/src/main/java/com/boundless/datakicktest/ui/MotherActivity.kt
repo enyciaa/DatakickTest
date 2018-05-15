@@ -10,7 +10,7 @@ import io.reactivex.disposables.Disposable
 
 abstract class MotherActivity : AppCompatActivity() {
 
-  private val lifecycleReceivers: List<LifecycleReceiver> = listOf()
+  private val lifecycleReceivers: MutableList<LifecycleReceiver> = mutableListOf()
   private val compositeDisposable = CompositeDisposable()
 
   abstract fun provideLifecycleReceivers(): List<LifecycleReceiver>
@@ -18,6 +18,7 @@ abstract class MotherActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     AndroidInjection.inject(this)
     super.onCreate(savedInstanceState)
+    lifecycleReceivers.addAll(provideLifecycleReceivers())
   }
 
   @CallSuper
