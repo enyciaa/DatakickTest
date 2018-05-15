@@ -1,6 +1,5 @@
 package com.boundless.datakicktest.common.ui.viewmodels
 
-import com.boundless.datakicktest.common.entities.Book
 import com.boundless.datakicktest.common.ui.model.MainModel
 import com.boundless.datakicktest.common.ui.states.MainViewState
 import com.jakewharton.rxrelay2.BehaviorRelay
@@ -10,8 +9,8 @@ class MainViewModel(
     private val mainModel: MainModel
 ) : MotherViewModel() {
 
-  private val viewState: BehaviorRelay<MainViewState> = BehaviorRelay.createDefault(MainViewState())
-  private val lastViewState: MainViewState = MainViewState()
+  private var lastViewState: MainViewState = MainViewState()
+  private val viewState: BehaviorRelay<MainViewState> = BehaviorRelay.createDefault(lastViewState)
 
   fun getViewState(): Observable<MainViewState> = viewState
 
@@ -19,19 +18,16 @@ class MainViewModel(
     super.onAttach()
     mainModel.fetchProducts()
         .subscribe(
-            { emitViewState(lastViewState.copy(hello = (it as Book).name)) },
-            {}
+            { emitViewState(lastViewState.copy(products = it)) },
+            {  }
         )
-  }
-
-  override fun onDetach() {
-    super.onDetach()
   }
 
   fun onButtonClick() {
   }
 
   private fun emitViewState(newViewState: MainViewState) {
+    lastViewState = newViewState
     viewState.accept(newViewState)
   }
 }
