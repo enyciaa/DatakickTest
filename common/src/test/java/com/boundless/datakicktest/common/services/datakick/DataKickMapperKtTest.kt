@@ -1,8 +1,8 @@
 package com.boundless.datakicktest.common.services.datakick
 
-import com.boundless.datakicktest.testinfastructure.aRawDataKickResponseBuilder
 import com.boundless.datakicktest.common.entities.Book
 import com.boundless.datakicktest.common.entities.FoodItem
+import com.boundless.datakicktest.testinfastructure.aRawDataKickResponseBuilder
 import org.amshove.kluent.shouldBeInstanceOf
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
@@ -14,7 +14,10 @@ class DataKickMapperKtTest {
     val brandName = "kellogs"
     val foodItemResponse = aRawDataKickResponseBuilder().withBrandName(brandName).build()
     val publisher = "harper"
-    val bookResponse = aRawDataKickResponseBuilder().withPublisher(publisher).build()
+    val bookResponse = aRawDataKickResponseBuilder()
+        .withPublisher(publisher)
+        .withAuthor("author")
+        .build()
     val responses = listOf(foodItemResponse, bookResponse)
 
     val result = responses.mapToProducts()
@@ -39,7 +42,10 @@ class DataKickMapperKtTest {
   @Test
   fun listOfBookResponsesMappedCorrectly() {
     val publisher = "harper"
-    val bookResponse = aRawDataKickResponseBuilder().withPublisher(publisher).build()
+    val bookResponse = aRawDataKickResponseBuilder()
+        .withPublisher(publisher)
+        .withAuthor("author")
+        .build()
     val responses = listOf(bookResponse)
 
     val result = responses.mapToProducts()

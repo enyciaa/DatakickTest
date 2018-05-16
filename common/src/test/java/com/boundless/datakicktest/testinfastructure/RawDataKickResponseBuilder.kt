@@ -13,6 +13,7 @@ class RawDataKickResponseBuilder {
   private var name = DEFAULT_NAME
   private var brandName: String? = null
   private var publisher: String? = null
+  private var author: String? = null
 
   fun withBrandName(brandName: String) = this.apply {
     this.brandName = brandName
@@ -22,11 +23,16 @@ class RawDataKickResponseBuilder {
     this.publisher = publisher
   }
 
+  fun withAuthor(author: String) = this.apply {
+    this.author = author
+  }
+
   fun build() = RawDataKickResponse(
       gtin14 = id,
       name = name,
-      brandName = brandName,
-      publisher = publisher
+      brand_name = brandName,
+      publisher = publisher,
+      author = author
   )
 }
 
