@@ -1,12 +1,15 @@
 package com.boundless.datakicktest.common.ui.viewmodels
 
+import com.boundless.datakicktest.common.CoreroutineContextProvider
 import com.boundless.datakicktest.common.ui.model.MainModel
 import com.boundless.datakicktest.common.ui.states.MainViewState
 import com.jakewharton.rxrelay2.BehaviorRelay
 import io.reactivex.Observable
+import kotlinx.coroutines.experimental.launch
 
 class MainViewModel(
-    private val mainModel: MainModel
+    private val mainModel: MainModel,
+    private val coreroutineContextProvider: CoreroutineContextProvider
 ) : MotherViewModel() {
 
   private var lastViewState: MainViewState = MainViewState()
@@ -20,27 +23,30 @@ class MainViewModel(
   }
 
   fun filterByBooks() {
-    mainModel.fetchBooks()
-        .subscribe(
-            { emitViewState(lastViewState.copy(products = it)) },
-            {  }
-        )
+    launch(coreroutineContextProvider.androidUi) {
+      // Load here
+      val books = mainModel.fetchBooks().await()
+      emitViewState(lastViewState.copy(products = books))
+      // error here
+    }
   }
 
   fun filterByFood() {
-    mainModel.fetchFood()
-        .subscribe(
-            { emitViewState(lastViewState.copy(products = it)) },
-            {  }
-        )
+    launch(coreroutineContextProvider.androidUi) {
+      // Load here
+      val food = mainModel.fetchFood().await()
+      emitViewState(lastViewState.copy(products = food))
+      // error here
+    }
   }
 
   fun showAllProducts() {
-    mainModel.fetchProducts()
-        .subscribe(
-            { emitViewState(lastViewState.copy(products = it)) },
-            {  }
-        )
+    launch(coreroutineContextProvider.androidUi) {
+      // Load here
+      val allProducts = mainModel.fetchProducts().await()
+      emitViewState(lastViewState.copy(products = allProducts))
+      // error here
+    }
   }
 
   private fun emitViewState(newViewState: MainViewState) {
