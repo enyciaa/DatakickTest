@@ -1,34 +1,33 @@
 package com.boundless.datakicktest.common.ui.model
 
+import com.boundless.datakicktest.common.CoreroutineContextProvider
 import com.boundless.datakicktest.common.entities.Product
 import com.boundless.datakicktest.common.repositories.ProductsRepository
 import com.boundless.datakicktest.common.ui.states.ProductViewState
-import com.boundless.datakicktest.common.usecases.filterByBooks
-import com.boundless.datakicktest.common.usecases.filterByFood
-import com.boundless.elephant.threading.ThreadProvider
-import io.reactivex.Single
+import kotlinx.coroutines.experimental.Deferred
+import kotlinx.coroutines.experimental.async
 
 class MainModel(
-    private val threadProvider: ThreadProvider,
+    private val coreroutineContextProvider: CoreroutineContextProvider,
     private val productsRepository: ProductsRepository
 ) {
 
-  fun fetchProducts(): Single<List<ProductViewState>> =
+  fun fetchProducts(): Deferred<List<ProductViewState>> =
       fetchAllProducts()
           .map { it.mapToProductViewStates() }
 
-  fun fetchBooks(): Single<List<ProductViewState>> =
+  fun fetchBooks(): Deferred<List<ProductViewState>> =
       fetchAllProducts()
           .map { it.filterByBooks() }
           .map { it.mapToProductViewStates() }
 
-  fun fetchFood(): Single<List<ProductViewState>> =
+  fun fetchFood(): Deferred<List<ProductViewState>> =
       fetchAllProducts()
           .map { it.filterByFood() }
           .map { it.mapToProductViewStates() }
 
-  private fun fetchAllProducts(): Single<List<Product>> =
-      productsRepository.fetchProducts()
-          .subscribeOn(threadProvider.io)
-          .observeOn(threadProvider.main)
+  private fun fetchAllProducts(): Deferred<List<Product>> =
+      async(coreroutineContextProvider.commonPool) {
+        productsRepository.fetchProducts()
+      }
 }
