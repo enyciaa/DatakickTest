@@ -3,8 +3,15 @@ apply plugin: 'kotlin-kapt'
 
 apply from: '../gradle/config/common_java_library_block.gradle'
 
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coreroutinesVersion}"
     implementation "com.github.enyciaa:Elephant:${elephantVersion}"
 
     implementation rxJavaDependencies

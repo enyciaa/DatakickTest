@@ -12,6 +12,7 @@ ext {
     gradleAndroidPluginVersion = '3.1.1'
 
     kotlinVersion = '1.2.41'
+    coreroutinesVersion = '0.22.5'
     elephantVersion = '1.1.0'
     turtleVersion = '1.4.11'
 
