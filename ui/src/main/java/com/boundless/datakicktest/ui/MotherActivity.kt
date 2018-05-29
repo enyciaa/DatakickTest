@@ -5,13 +5,10 @@ import android.support.annotation.CallSuper
 import android.support.v7.app.AppCompatActivity
 import com.boundless.datakicktest.common.ui.viewmodels.LifecycleReceiver
 import dagger.android.AndroidInjection
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 
 abstract class MotherActivity : AppCompatActivity() {
 
   private val lifecycleReceivers: MutableList<LifecycleReceiver> = mutableListOf()
-  private val compositeDisposable = CompositeDisposable()
 
   abstract fun provideLifecycleReceivers(): List<LifecycleReceiver>
 
@@ -31,10 +28,5 @@ abstract class MotherActivity : AppCompatActivity() {
   override fun onPause() {
     super.onPause()
     lifecycleReceivers.forEach { it.onDetach() }
-    compositeDisposable.clear()
-  }
-
-  protected fun Disposable.addToDisposables() {
-    compositeDisposable.add(this)
   }
 }

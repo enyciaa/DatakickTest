@@ -15,7 +15,6 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
     implementation "com.github.enyciaa:Turtle:${turtleVersion}"
-    implementation rxJavaDependencies
 
     implementation "com.google.dagger:dagger-android:${daggerVersion}"
 
