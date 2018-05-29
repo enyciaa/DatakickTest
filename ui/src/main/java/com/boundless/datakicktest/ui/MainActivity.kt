@@ -47,11 +47,7 @@ class MainActivity : MotherActivity() {
 
   override fun onResume() {
     super.onResume()
-    viewModel.getViewState()
-        .subscribe(
-            { renderViewState(it) },
-            {}
-        )
+    viewModel.viewStateUpdatedCallback = this::renderViewState
   }
 
   private fun renderViewState(mainViewState: MainViewState) {

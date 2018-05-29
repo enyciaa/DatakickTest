@@ -3,22 +3,18 @@ package com.boundless.datakicktest.common.ui.viewmodels
 import com.boundless.datakicktest.common.CoreroutineContextProvider
 import com.boundless.datakicktest.common.ui.model.MainModel
 import com.boundless.datakicktest.common.ui.states.MainViewState
-import com.jakewharton.rxrelay2.BehaviorRelay
-import io.reactivex.Observable
 import kotlinx.coroutines.experimental.launch
 
 class MainViewModel(
     private val mainModel: MainModel,
     private val coreroutineContextProvider: CoreroutineContextProvider
-) : MotherViewModel() {
+) : MotherViewModel<MainViewState>() {
 
-  private var lastViewState: MainViewState = MainViewState()
-  private val viewState: BehaviorRelay<MainViewState> = BehaviorRelay.createDefault(lastViewState)
-
-  fun getViewState(): Observable<MainViewState> = viewState
+  override var lastViewState: MainViewState = MainViewState()
 
   override fun onAttach() {
     super.onAttach()
+    emitViewState(lastViewState)
     showAllProducts()
   }
 
@@ -47,10 +43,5 @@ class MainViewModel(
       emitViewState(lastViewState.copy(products = allProducts))
       // error here
     }
-  }
-
-  private fun emitViewState(newViewState: MainViewState) {
-    lastViewState = newViewState
-    viewState.accept(newViewState)
   }
 }
