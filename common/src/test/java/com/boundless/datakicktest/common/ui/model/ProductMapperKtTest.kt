@@ -2,6 +2,7 @@ package com.boundless.datakicktest.common.ui.model
 
 import com.boundless.datakicktest.common.ui.states.BookItemViewState
 import com.boundless.datakicktest.common.ui.states.FoodItemViewState
+import com.boundless.datakicktest.common.usecases.mapToProductViewStates
 import com.boundless.datakicktest.testinfastructure.BookBuilder
 import com.boundless.datakicktest.testinfastructure.FoodItemBuilder
 import com.boundless.datakicktest.testinfastructure.aBookBuilder
@@ -10,7 +11,7 @@ import org.amshove.kluent.shouldBeInstanceOf
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-class MainMapperKtTest {
+class ProductMapperKtTest {
 
   @Test
   fun listOfMixedProductsMappedCorrectly() {

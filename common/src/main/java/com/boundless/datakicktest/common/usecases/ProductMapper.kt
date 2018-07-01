@@ -1,4 +1,4 @@
-package com.boundless.datakicktest.common.ui.model
+package com.boundless.datakicktest.common.usecases
 
 import com.boundless.datakicktest.common.entities.Book
 import com.boundless.datakicktest.common.entities.FoodItem

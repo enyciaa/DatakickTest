@@ -10,14 +10,10 @@ class ProductsRepository(
 
   private var cachedProducts: List<Product>? = null
 
-  fun fetchProducts(): Single<List<Product>> {
-    return if (cachedProducts == null)
-      fetchProductsFromNetwork()
-    else
-      Single.just(cachedProducts)
-  }
+  fun fetchProducts(): List<Product> =
+    cachedProducts ?: fetchProductsFromNetwork()
 
-  private fun fetchProductsFromNetwork(): Single<List<Product>> =
+  private fun fetchProductsFromNetwork(): List<Product> =
       dataKickService.fetchProducts()
           .doOnSuccess { cachedProducts = it }
 }
