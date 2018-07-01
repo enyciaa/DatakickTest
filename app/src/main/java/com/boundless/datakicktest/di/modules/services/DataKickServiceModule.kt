@@ -3,10 +3,10 @@ package com.boundless.datakicktest.di.modules.services
 import com.boundless.datakicktest.common.services.datakick.DATA_KICK_BASE_URL
 import com.boundless.datakicktest.common.services.datakick.DataKickApi
 import com.boundless.datakicktest.common.services.datakick.DataKickService
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Named
 
@@ -29,7 +29,7 @@ class DataKickServiceModule {
   fun provideDataKickApi(
       @Named(DATA_KICK_SERVICE_NAMED_BASE_URL) baseUrl: String,
       jsonConverter: MoshiConverterFactory,
-      callAdapter: RxJava2CallAdapterFactory
+      callAdapter: CoroutineCallAdapterFactory
   ): DataKickApi {
     val retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)

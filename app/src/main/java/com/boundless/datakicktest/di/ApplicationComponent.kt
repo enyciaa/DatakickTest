@@ -6,9 +6,9 @@ import com.boundless.datakicktest.di.modules.AndroidSystemModule
 import com.boundless.datakicktest.di.modules.RepositoryModule
 import com.boundless.datakicktest.di.modules.ThreadingModule
 import com.boundless.datakicktest.di.modules.TurtleModule
+import com.boundless.datakicktest.di.modules.services.ServiceModule
 import com.boundless.datakicktest.di.ui.modules.UiModule
 import com.boundless.elephant.libraryhelpers.dagger.PerApplication
-import com.boundless.datakicktest.di.modules.services.ServiceModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -19,9 +19,9 @@ import dagger.android.AndroidInjectionModule
       AndroidInjectionModule::class,
       AndroidSystemModule::class,
       TurtleModule::class,
+      ThreadingModule::class,
       UiModule::class,
       RepositoryModule::class,
-      ThreadingModule::class,
       ServiceModule::class
     ]
 )

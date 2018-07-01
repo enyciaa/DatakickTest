@@ -42,7 +42,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
     implementation "com.github.enyciaa:Turtle:${turtleVersion}"
     implementation "com.github.enyciaa:Elephant:${elephantVersion}"
-    implementation rxJavaDependencies
     implementation networkingDependencies
     
     implementation "com.google.dagger:dagger:${daggerVersion}"

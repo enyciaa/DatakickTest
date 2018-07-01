@@ -1,9 +1,9 @@
 package com.boundless.datakicktest.di.modules.services
 
 import com.boundless.datakicktest.di.modules.services.DataKickServiceModule
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 @Module(
@@ -18,6 +18,6 @@ class ServiceModule {
       MoshiConverterFactory.create()
 
   @Provides
-  fun provideRxJava2CallAdapter(): RxJava2CallAdapterFactory =
-      RxJava2CallAdapterFactory.create()
+  fun provideCoreroutineCallAdapter(): CoroutineCallAdapterFactory =
+      CoroutineCallAdapterFactory()
 }

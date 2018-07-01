@@ -4,6 +4,7 @@ import com.boundless.datakicktest.testinfastructure.aFoodItemBuilder
 import com.boundless.datakicktest.testinfastructure.aRawDataKickResponseBuilder
 import com.boundless.datakicktest.common.entities.Product
 import com.boundless.datakicktest.common.services.datakick.entities.RawDataKickResponse
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader
 import io.mockk.every
 import io.mockk.mockk
 import io.reactivex.Single
@@ -20,7 +21,7 @@ class DataKickServiceTest {
     val brandName = "kellogs"
     val foodItemResponse = aRawDataKickResponseBuilder().withBrandName(brandName).build()
     val apiResults: List<RawDataKickResponse> = listOf(foodItemResponse)
-    every { dataKickApi.fetchItems() } returns Single.just(apiResults)
+    every { dataKickApi.fetchItems() } returns XsiNilLoader.Single.just(apiResults)
     val expectedResult: List<Product> = listOf(aFoodItemBuilder().withBrandName(brandName).build())
 
     val result = service.fetchProducts().blockingGet()

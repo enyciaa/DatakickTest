@@ -3,6 +3,7 @@ package com.boundless.datakicktest.common.repositories
 import com.boundless.datakicktest.testinfastructure.aFoodItemBuilder
 import com.boundless.datakicktest.common.entities.Product
 import com.boundless.datakicktest.common.services.datakick.DataKickService
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -19,7 +20,7 @@ class MyRepositoryTest {
   @Test
   fun givenNoCachedValue_whenFetchProducts_returnFromNetwork() {
     val products = listOf<Product>(aFoodItemBuilder().build())
-    every { dataKickService.fetchProducts() } returns Single.just(products)
+    every { dataKickService.fetchProducts() } returns XsiNilLoader.Single.just(products)
 
     repository.fetchProducts()
 
@@ -29,7 +30,7 @@ class MyRepositoryTest {
   @Test
   fun givenCachedValue_whenFetchProducts_returnCachedProducts() {
     val products = listOf<Product>(aFoodItemBuilder().build())
-    every { dataKickService.fetchProducts() } returns Single.just(products)
+    every { dataKickService.fetchProducts() } returns XsiNilLoader.Single.just(products)
     repository.fetchProducts().blockingGet()
 
     repository.fetchProducts().blockingGet()
