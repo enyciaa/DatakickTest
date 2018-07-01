@@ -23,6 +23,7 @@ ext {
     moshiVersion = '1.5.0'
     okhttp3Version = '3.10.0'
     retrofit2Version = '2.4.0'
+    coreroutinesRetrofitAdapter = '1.0.0'
 
     rxJavaVersion = '2.1.13'
     rxAndroidVersion = '2.0.2'
