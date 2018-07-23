@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primary">#607D8B</color>
+    <color name="primaryDark">#455A64</color>
+    <color name="accent">#FF5722</color>
+
+    <!-- GREYSCALE -->
+    <color name="white_100a">#ffffff</color>
+    <color name="white_70a">#B3ffffff</color>
+    <color name="white_50a">#80ffffff</color>
+    <color name="white_30a">#4Dffffff</color>
+    <color name="white_12a">#1FFFFFFF</color>
+    <color name="black_70a">#B3000000</color>
+    <color name="black_54a">#8A000000</color>
+    <color name="black_26a">#42000000</color>
+    <color name="black_12a">#1F000000</color>
+
+</resources>

@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+apply from: '../gradle/config/common_android_library_block.gradle'
+
+android {
+    defaultConfig {
+        applicationId "com.boundless.datakicktest"
+        versionCode appVersionCode
+        versionName appVersionNumber
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("keystores/Boundless_debug_key.keystore")
+            storePassword "debugdebugdebug"
+            keyAlias "Boundless"
+            keyPassword "debugdebugdebug"
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            debuggable true
+            matchingFallbacks = ['release']
+
+            resValue 'string', 'app_name', '"DataKickTest"'
+        }
+    }
+}
+
+dependencies {
+    implementation(project(':ui'))
+    implementation(project(':common'))
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
+    implementation "com.github.enyciaa:Jerboa:${jerboaVersion}"
+    implementation "com.github.enyciaa:Aardvark:${aardvarkVersion}"
+    implementation networkingDependencies
+    
+    implementation "com.google.dagger:dagger:${daggerVersion}"
+    implementation "com.google.dagger:dagger-android:${daggerVersion}"
+    implementation "com.google.dagger:dagger-android-support:${daggerVersion}"
+    kapt "com.google.dagger:dagger-android-processor:${daggerVersion}"
+    kapt "com.google.dagger:dagger-compiler:${daggerVersion}"
+
+    testImplementation javaTestingDependencies
+}
