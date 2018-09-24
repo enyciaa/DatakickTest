@@ -1,7 +1,7 @@
 package com.boundless.datakicktest.di.ui.modules
 
 import com.boundless.datakicktest.common.CoreroutineContextProvider
-import com.boundless.datakicktest.common.ui.model.MainModel
+import com.boundless.datakicktest.common.usecases.ProductFetcher
 import com.boundless.datakicktest.common.ui.viewmodels.MainViewModel
 import dagger.Module
 import dagger.Provides
@@ -11,8 +11,8 @@ class ViewModelModule {
 
   @Provides
   fun provideMainViewModel(
-      mainModel: MainModel,
-      coreroutineContextProvider: CoreroutineContextProvider
+          productFetcher: ProductFetcher,
+          coreroutineContextProvider: CoreroutineContextProvider
   ): MainViewModel =
-      MainViewModel(mainModel, coreroutineContextProvider)
+      MainViewModel(coreroutineContextProvider, productFetcher)
 }

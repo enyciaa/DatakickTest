@@ -9,6 +9,7 @@ import com.boundless.datakicktest.di.modules.TurtleModule
 import com.boundless.datakicktest.di.modules.services.ServiceModule
 import com.boundless.datakicktest.di.ui.modules.UiModule
 import com.boundless.aardvark.libraryhelpers.dagger.PerApplication
+import com.boundless.datakicktest.di.modules.UsecaseModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -22,7 +23,8 @@ import dagger.android.AndroidInjectionModule
       ThreadingModule::class,
       UiModule::class,
       RepositoryModule::class,
-      ServiceModule::class
+      ServiceModule::class,
+      UsecaseModule::class
     ]
 )
 interface ApplicationComponent {

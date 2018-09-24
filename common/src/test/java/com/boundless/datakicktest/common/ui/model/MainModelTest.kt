@@ -2,6 +2,7 @@ package com.boundless.datakicktest.common.ui.model
 
 import com.boundless.datakicktest.common.entities.Product
 import com.boundless.datakicktest.common.repositories.ProductsRepository
+import com.boundless.datakicktest.common.usecases.ProductFetcher
 import com.boundless.datakicktest.testinfastructure.TestCoreroutineContextProvider
 import com.boundless.datakicktest.testinfastructure.aFoodItemBuilder
 import io.mockk.every
@@ -14,9 +15,9 @@ class MainModelTest {
 
   private val coreroutineContextProvider = TestCoreroutineContextProvider()
   private val productsRepository: ProductsRepository = mockk()
-  private val model = MainModel(
-      coreroutineContextProvider,
-      productsRepository
+  private val model = ProductFetcher(
+          coreroutineContextProvider,
+          productsRepository
   )
 
   @Test
@@ -24,7 +25,7 @@ class MainModelTest {
     val products = listOf<Product>(aFoodItemBuilder().build())
     every { productsRepository.fetchProducts() } returns Single.just(products)
 
-    model.fetchProducts()
+    model.allProducts()
 
     verify { productsRepository.fetchProducts() }
   }

@@ -1,17 +1,16 @@
 package com.boundless.datakicktest.common.ui.viewmodels
 
-import com.boundless.datakicktest.common.ui.model.MainModel
+import com.boundless.datakicktest.common.usecases.ProductFetcher
 import com.boundless.datakicktest.common.ui.states.ProductViewState
 import com.boundless.datakicktest.testinfastructure.aBookItemViewState
 import io.mockk.every
 import io.mockk.mockk
 import io.reactivex.Single
-import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 class MainViewModelTest {
 
-  private val mainModel: MainModel = mockk()
+  private val mainModel: ProductFetcher = mockk()
   private val viewModel = MainViewModel(
       mainModel
   )
@@ -19,7 +18,7 @@ class MainViewModelTest {
   @Test
   fun givenProductViewStates_whenAttach_thenEmitProducts() {
     val productViewStates = listOf<ProductViewState>(aBookItemViewState().build())
-    every { mainModel.fetchProducts() } returns Single.just(productViewStates)
+    every { mainModel.allProducts() } returns Single.just(productViewStates)
 
     viewModel.onAttach()
     val result = viewModel.getViewState().blockingFirst()
@@ -29,7 +28,7 @@ class MainViewModelTest {
 
   @Test
   fun givenProductViewStatesNeverReturns_whenAttach_thenEmitDefaultProducts() {
-    every { mainModel.fetchProducts() } returns Single.never()
+    every { mainModel.allProducts() } returns Single.never()
 
     viewModel.onAttach()
     val result = viewModel.getViewState().blockingFirst()

@@ -1,7 +1,6 @@
 package com.boundless.datakicktest.di.ui.components
 
 import com.boundless.datakicktest.di.ui.modules.ActivityScopedModule
-import com.boundless.datakicktest.di.ui.modules.ModelModule
 import com.boundless.datakicktest.di.ui.modules.ViewModelModule
 import com.boundless.datakicktest.ui.MainActivity
 import com.boundless.datakicktest.ui.MotherActivity
@@ -17,8 +16,7 @@ interface MainActivityAndroidInjectorModule {
   @ContributesAndroidInjector(modules = [
     MainActivityModule::class,
     ActivityScopedModule::class,
-    ViewModelModule::class,
-    ModelModule::class
+    ViewModelModule::class
   ])
   fun provideMainActivity(): MainActivity
 }
