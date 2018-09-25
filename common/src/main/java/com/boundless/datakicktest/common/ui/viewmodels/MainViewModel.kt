@@ -3,12 +3,11 @@ package com.boundless.datakicktest.common.ui.viewmodels
 import com.boundless.datakicktest.common.CoreroutineContextProvider
 import com.boundless.datakicktest.common.ui.states.MainViewState
 import com.boundless.datakicktest.common.usecases.ProductFetcher
-import kotlinx.coroutines.experimental.launch
 
 class MainViewModel(
-        private val coreroutineContextProvider: CoreroutineContextProvider,
+        coreRoutineContextProvider: CoreroutineContextProvider,
         private val productFetcher: ProductFetcher
-) : MotherViewModel<MainViewState>() {
+) : MotherViewModel<MainViewState>(coreRoutineContextProvider) {
 
     override var lastViewState: MainViewState = MainViewState()
 
@@ -19,21 +18,21 @@ class MainViewModel(
     }
 
     fun filterByBooks() {
-        launch(coreroutineContextProvider.commonPool, parent = coreroutineManager) {
+        launchDefaultCoreRoutine {
             val books = productFetcher.books()
             emitViewState(lastViewState.copy(products = books))
         }
     }
 
     fun filterByFood() {
-        launch(coreroutineContextProvider.commonPool, parent = coreroutineManager) {
+        launchDefaultCoreRoutine {
             val food = productFetcher.food()
             emitViewState(lastViewState.copy(products = food))
         }
     }
 
     fun showAllProducts() {
-        launch(coreroutineContextProvider.commonPool, parent = coreroutineManager) {
+        launchDefaultCoreRoutine {
             val allProducts = productFetcher.allProducts()
             emitViewState(lastViewState.copy(products = allProducts))
         }
