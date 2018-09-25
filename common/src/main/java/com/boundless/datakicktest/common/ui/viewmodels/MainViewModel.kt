@@ -3,6 +3,7 @@ package com.boundless.datakicktest.common.ui.viewmodels
 import com.boundless.datakicktest.common.CoreroutineContextProvider
 import com.boundless.datakicktest.common.ui.states.MainViewState
 import com.boundless.datakicktest.common.usecases.ProductFetcher
+import kotlinx.coroutines.experimental.async
 
 class MainViewModel(
         coreRoutineContextProvider: CoreroutineContextProvider,
@@ -19,22 +20,35 @@ class MainViewModel(
 
     fun filterByBooks() {
         launchDefaultCoreRoutine {
-            val books = productFetcher.books()
-            emitViewState(lastViewState.copy(products = books))
+            try {
+                val books = productFetcher.books()
+                emitViewState(lastViewState.copy(products = books, errorState = false))
+            } catch (exception: Exception) {
+                emitViewState(lastViewState.copy(errorState = true))
+            }
         }
     }
 
     fun filterByFood() {
         launchDefaultCoreRoutine {
-            val food = productFetcher.food()
-            emitViewState(lastViewState.copy(products = food))
+            try {
+                val food = productFetcher.food()
+                emitViewState(lastViewState.copy(products = food, errorState = false))
+            } catch (exception: Exception) {
+                emitViewState(lastViewState.copy(errorState = true))
+            }
+
         }
     }
 
     fun showAllProducts() {
         launchDefaultCoreRoutine {
-            val allProducts = productFetcher.allProducts()
-            emitViewState(lastViewState.copy(products = allProducts))
+            try {
+                val allProducts = productFetcher.allProducts()
+                emitViewState(lastViewState.copy(products = allProducts, errorState = false))
+            } catch (exception: Exception) {
+                emitViewState(lastViewState.copy(errorState = true))
+            }
         }
     }
 }

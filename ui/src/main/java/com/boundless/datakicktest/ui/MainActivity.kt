@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import com.boundless.aardvark.extensions.makeGone
+import com.boundless.aardvark.extensions.makeVisible
 import com.boundless.datakicktest.common.ui.states.BookItemViewState
 import com.boundless.datakicktest.common.ui.states.FoodItemViewState
 import com.boundless.datakicktest.common.ui.states.MainViewState
