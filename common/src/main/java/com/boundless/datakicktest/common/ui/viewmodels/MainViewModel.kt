@@ -3,12 +3,12 @@ package com.boundless.datakicktest.common.ui.viewmodels
 import com.boundless.datakicktest.common.CoreroutineContextProvider
 import com.boundless.datakicktest.common.ui.states.MainViewState
 import com.boundless.datakicktest.common.usecases.ProductFetcher
-import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.experimental.launch
 
 class MainViewModel(
-        coreRoutineContextProvider: CoreroutineContextProvider,
+        private val coreRoutineContextProvider: CoreroutineContextProvider,
         private val productFetcher: ProductFetcher
-) : MotherViewModel<MainViewState>(coreRoutineContextProvider) {
+) : MotherViewModel<MainViewState>() {
 
     override var lastViewState: MainViewState = MainViewState()
 
@@ -18,37 +18,40 @@ class MainViewModel(
         showAllProducts()
     }
 
+    fun showAllProducts() {
+        launch(coreRoutineContextProvider.commonPool, parent = coreroutineManager)  {
+            try {
+                val allProducts = productFetcher.allProducts()
+                emitViewState(lastViewState.withProducts(allProducts))
+            } catch (exception: Exception) {
+                // Handle custom errors here
+                emitViewState(lastViewState.copy(errorState = true))
+            }
+        }
+    }
+
     fun filterByBooks() {
-        launchDefaultCoreRoutine {
+        launch(coreRoutineContextProvider.commonPool, parent = coreroutineManager)  {
             try {
                 val books = productFetcher.books()
-                emitViewState(lastViewState.copy(products = books, errorState = false))
+                emitViewState(lastViewState.withProducts(books))
             } catch (exception: Exception) {
+                // Handle custom errors here
                 emitViewState(lastViewState.copy(errorState = true))
             }
         }
     }
 
     fun filterByFood() {
-        launchDefaultCoreRoutine {
+        launch(coreRoutineContextProvider.commonPool, parent = coreroutineManager)  {
             try {
                 val food = productFetcher.food()
-                emitViewState(lastViewState.copy(products = food, errorState = false))
+                emitViewState(lastViewState.withProducts(food))
             } catch (exception: Exception) {
+                // Handle custom errors here
                 emitViewState(lastViewState.copy(errorState = true))
             }
 
-        }
-    }
-
-    fun showAllProducts() {
-        launchDefaultCoreRoutine {
-            try {
-                val allProducts = productFetcher.allProducts()
-                emitViewState(lastViewState.copy(products = allProducts, errorState = false))
-            } catch (exception: Exception) {
-                emitViewState(lastViewState.copy(errorState = true))
-            }
         }
     }
 }

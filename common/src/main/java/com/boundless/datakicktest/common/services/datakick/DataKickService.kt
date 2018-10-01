@@ -9,9 +9,10 @@ class DataKickService(
     private val dataKickApi: DataKickApi
 ) {
 
-  fun fetchProducts(): List<Product> =
-      handleCall(dataKickApi.fetchItems())!!
-          .mapToProducts()
+  fun fetchProducts(): List<Product> {
+    return handleCall(dataKickApi.fetchItems())!!
+            .mapToProducts()
+  }
 
   private fun <T> handleCall(call: Call<T>): T? {
     val response = call.execute()
@@ -26,7 +27,7 @@ class DataKickService(
           request: Request,
           response: Response<T>
   ): Nothing {
-    // Handle HTTP or API error codes here
+    // Handle HTTP or API error codes here using the request and response
     throw DataKickException()
   }
 

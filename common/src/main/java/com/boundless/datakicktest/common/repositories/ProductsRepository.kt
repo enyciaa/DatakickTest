@@ -9,8 +9,9 @@ class ProductsRepository(
 
   private var cachedProducts: List<Product>? = null
 
-  fun fetchProducts(): List<Product> =
-    cachedProducts ?: fetchProductsFromNetwork()
+  fun fetchProducts(): List<Product> {
+    return cachedProducts ?: fetchProductsFromNetwork()
+  }
 
   private fun fetchProductsFromNetwork(): List<Product> {
     val products = dataKickService.fetchProducts()
