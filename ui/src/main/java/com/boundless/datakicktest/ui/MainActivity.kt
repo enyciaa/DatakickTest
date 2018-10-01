@@ -18,6 +18,10 @@ import javax.inject.Inject
 
 class MainActivity : MotherActivity() {
 
+  companion object {
+    fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
+  }
+
   @Inject lateinit var viewModel: MainViewModel
 
   private lateinit var binding: MainActivityBinding
@@ -28,10 +32,6 @@ class MainActivity : MotherActivity() {
       is BookItemViewState -> itemBinding.set(BR.viewState, R.layout.book_item)
       else -> { /* Do nothing */ }
     }
-  }
-
-  companion object {
-    fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
