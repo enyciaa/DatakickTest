@@ -1,6 +1,5 @@
 package com.boundless.datakicktest.di.modules
 
-import com.boundless.datakicktest.common.CoreroutineContextProvider
 import com.boundless.datakicktest.common.repositories.ProductsRepository
 import com.boundless.datakicktest.common.usecases.ProductFetcher
 import dagger.Module

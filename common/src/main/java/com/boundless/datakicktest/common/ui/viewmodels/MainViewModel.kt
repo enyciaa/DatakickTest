@@ -1,12 +1,13 @@
 package com.boundless.datakicktest.common.ui.viewmodels
 
-import com.boundless.datakicktest.common.CoreroutineContextProvider
+import com.boundless.datakicktest.common.CoroutineCtxProvider
 import com.boundless.datakicktest.common.ui.states.MainViewState
 import com.boundless.datakicktest.common.usecases.ProductFetcher
 import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.experimental.withContext
 
 class MainViewModel(
-        private val coreRoutineContextProvider: CoreroutineContextProvider,
+        private val coroutineCtxProvider: CoroutineCtxProvider,
         private val productFetcher: ProductFetcher
 ) : MotherViewModel<MainViewState>() {
 
@@ -19,9 +20,9 @@ class MainViewModel(
     }
 
     fun showAllProducts() {
-        launch(coreRoutineContextProvider.commonPool, parent = coreroutineManager)  {
+        launch(coroutineCtxProvider.UI, parent = coreroutineManager)  {
             try {
-                val allProducts = productFetcher.allProducts()
+                val allProducts = withContext(coroutineCtxProvider.commonPool) { productFetcher.allProducts() }
                 emitViewState(lastViewState.withProducts(allProducts))
             } catch (exception: Exception) {
                 // Handle custom errors here
@@ -31,9 +32,9 @@ class MainViewModel(
     }
 
     fun filterByBooks() {
-        launch(coreRoutineContextProvider.commonPool, parent = coreroutineManager)  {
+        launch(coroutineCtxProvider.commonPool, parent = coreroutineManager)  {
             try {
-                val books = productFetcher.books()
+                val books = withContext(coroutineCtxProvider.commonPool) { productFetcher.books() }
                 emitViewState(lastViewState.withProducts(books))
             } catch (exception: Exception) {
                 // Handle custom errors here
@@ -43,15 +44,14 @@ class MainViewModel(
     }
 
     fun filterByFood() {
-        launch(coreRoutineContextProvider.commonPool, parent = coreroutineManager)  {
+        launch(coroutineCtxProvider.commonPool, parent = coreroutineManager)  {
             try {
-                val food = productFetcher.food()
+                val food = withContext(coroutineCtxProvider.commonPool) { productFetcher.food() }
                 emitViewState(lastViewState.withProducts(food))
             } catch (exception: Exception) {
                 // Handle custom errors here
                 emitViewState(lastViewState.copy(errorState = true))
             }
-
         }
     }
 }

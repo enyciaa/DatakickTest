@@ -1,12 +1,12 @@
 package com.boundless.datakicktest.testinfastructure
 
-import com.boundless.datakicktest.common.CoreroutineContextProvider
+import com.boundless.datakicktest.common.CoroutineCtxProvider
 import kotlin.coroutines.experimental.CoroutineContext
 import kotlin.coroutines.experimental.EmptyCoroutineContext
 
-class TestCoreroutineContextProvider : CoreroutineContextProvider {
+class TestCoroutineCtxProvider : CoroutineCtxProvider {
 
-  override val androidUi: CoroutineContext
+  override val UI: CoroutineContext
     get() = EmptyCoroutineContext
 
   override val trampoline: CoroutineContext

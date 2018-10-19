@@ -2,9 +2,9 @@ package com.boundless.datakicktest.common
 
 import kotlin.coroutines.experimental.CoroutineContext
 
-interface CoreroutineContextProvider {
+interface CoroutineCtxProvider {
 
-  val androidUi: CoroutineContext
+  val UI: CoroutineContext
 
   val trampoline: CoroutineContext
 

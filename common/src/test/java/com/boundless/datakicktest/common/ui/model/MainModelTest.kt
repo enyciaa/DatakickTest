@@ -3,7 +3,7 @@ package com.boundless.datakicktest.common.ui.model
 import com.boundless.datakicktest.common.entities.Product
 import com.boundless.datakicktest.common.repositories.ProductsRepository
 import com.boundless.datakicktest.common.usecases.ProductFetcher
-import com.boundless.datakicktest.testinfastructure.TestCoreroutineContextProvider
+import com.boundless.datakicktest.testinfastructure.TestCoroutineCtxProvider
 import com.boundless.datakicktest.testinfastructure.aFoodItemBuilder
 import io.mockk.every
 import io.mockk.mockk
@@ -13,7 +13,7 @@ import org.junit.Test
 
 class MainModelTest {
 
-  private val coreroutineContextProvider = TestCoreroutineContextProvider()
+  private val coreroutineContextProvider = TestCoroutineCtxProvider()
   private val productsRepository: ProductsRepository = mockk()
   private val model = ProductFetcher(
           coreroutineContextProvider,

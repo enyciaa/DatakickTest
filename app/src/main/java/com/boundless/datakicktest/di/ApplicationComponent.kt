@@ -4,7 +4,7 @@ import android.app.Application
 import com.boundless.datakicktest.MyApplication
 import com.boundless.datakicktest.di.modules.AndroidSystemModule
 import com.boundless.datakicktest.di.modules.RepositoryModule
-import com.boundless.datakicktest.di.modules.ThreadingModule
+import com.boundless.datakicktest.di.modules.PlatformModule
 import com.boundless.datakicktest.di.modules.TurtleModule
 import com.boundless.datakicktest.di.modules.services.ServiceModule
 import com.boundless.datakicktest.di.ui.modules.UiModule
@@ -20,7 +20,7 @@ import dagger.android.AndroidInjectionModule
       AndroidInjectionModule::class,
       AndroidSystemModule::class,
       TurtleModule::class,
-      ThreadingModule::class,
+      PlatformModule::class,
       UiModule::class,
       RepositoryModule::class,
       ServiceModule::class,

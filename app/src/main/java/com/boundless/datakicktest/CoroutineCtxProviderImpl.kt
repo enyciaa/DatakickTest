@@ -1,15 +1,14 @@
 package com.boundless.datakicktest
 
-import android.util.Log
-import com.boundless.datakicktest.common.CoreroutineContextProvider
+import com.boundless.datakicktest.common.CoroutineCtxProvider
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.CoroutineExceptionHandler
 import kotlin.coroutines.experimental.CoroutineContext
 import kotlin.coroutines.experimental.EmptyCoroutineContext
 
-class CoreroutineContextProviderImpl : CoreroutineContextProvider {
+class CoroutineCtxProviderImpl : CoroutineCtxProvider {
 
-  override val androidUi: CoroutineContext
+  override val UI: CoroutineContext
     get() = Android + exceptionHandler
 
   override val trampoline: CoroutineContext

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.util.Log
 import com.boundless.aardvark.extensions.makeGone
 import com.boundless.aardvark.extensions.makeVisible
 import com.boundless.datakicktest.common.ui.states.BookItemViewState

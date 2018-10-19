@@ -1,6 +1,5 @@
 package com.boundless.datakicktest.common.ui.viewmodels
 
-import com.boundless.datakicktest.common.CoreroutineContextProvider
 import com.boundless.datakicktest.common.ui.states.ViewState
 import kotlinx.coroutines.experimental.*
 
