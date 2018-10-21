@@ -6,8 +6,8 @@ import com.boundless.datakicktest.ui.MainActivity
 
 class LauncherActivity : AppCompatActivity() {
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    startActivity(MainActivity.getIntent(this))
-  }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        startActivity(MainActivity.getIntent(this))
+    }
 }

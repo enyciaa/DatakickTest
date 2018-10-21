@@ -16,26 +16,27 @@ import dagger.android.AndroidInjectionModule
 
 @PerApplication
 @Component(
-    modules = [
-      AndroidInjectionModule::class,
-      AndroidSystemModule::class,
-      TurtleModule::class,
-      PlatformModule::class,
-      UiModule::class,
-      RepositoryModule::class,
-      ServiceModule::class,
-      UsecaseModule::class
-    ]
+        modules = [
+            AndroidInjectionModule::class,
+            AndroidSystemModule::class,
+            TurtleModule::class,
+            PlatformModule::class,
+            UiModule::class,
+            RepositoryModule::class,
+            ServiceModule::class,
+            UsecaseModule::class
+        ]
 )
 interface ApplicationComponent {
 
-  @Component.Builder
-  interface Builder {
-    @BindsInstance
-    fun provideApplication(application: Application): Builder
+    @Component.Builder
+    interface Builder {
 
-    fun build(): ApplicationComponent
-  }
+        @BindsInstance
+        fun provideApplication(application: Application): Builder
 
-  fun inject(application: MyApplication)
+        fun build(): ApplicationComponent
+    }
+
+    fun inject(application: MyApplication)
 }

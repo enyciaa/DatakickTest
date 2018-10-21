@@ -4,8 +4,8 @@ import com.boundless.datakicktest.di.ui.components.MainActivityAndroidInjectorMo
 import dagger.Module
 
 @Module(
-    includes = [
-        MainActivityAndroidInjectorModule::class
-    ]
+        includes = [
+            MainActivityAndroidInjectorModule::class
+        ]
 )
 class UiModule

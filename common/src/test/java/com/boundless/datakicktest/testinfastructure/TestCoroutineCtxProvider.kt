@@ -6,13 +6,13 @@ import kotlin.coroutines.experimental.EmptyCoroutineContext
 
 class TestCoroutineCtxProvider : CoroutineCtxProvider {
 
-  override val UI: CoroutineContext
-    get() = EmptyCoroutineContext
+    override val UI: CoroutineContext
+        get() = EmptyCoroutineContext
 
-  override val trampoline: CoroutineContext
-    get() = EmptyCoroutineContext
+    override val trampoline: CoroutineContext
+        get() = EmptyCoroutineContext
 
-  override val commonPool: CoroutineContext
-    get() = EmptyCoroutineContext
+    override val commonPool: CoroutineContext
+        get() = EmptyCoroutineContext
 
 }

@@ -10,29 +10,29 @@ import org.junit.Test
 
 class MainViewModelTest {
 
-  private val mainModel: ProductFetcher = mockk()
-  private val viewModel = MainViewModel(
-      mainModel
-  )
+    private val mainModel: ProductFetcher = mockk()
+    private val viewModel = MainViewModel(
+            mainModel
+    )
 
-  @Test
-  fun givenProductViewStates_whenAttach_thenEmitProducts() {
-    val productViewStates = listOf<ProductViewState>(aBookItemViewState().build())
-    every { mainModel.allProducts() } returns Single.just(productViewStates)
+    @Test
+    fun givenProductViewStates_whenAttach_thenEmitProducts() {
+        val productViewStates = listOf<ProductViewState>(aBookItemViewState().build())
+        every { mainModel.allProducts() } returns Single.just(productViewStates)
 
-    viewModel.onAttach()
-    val result = viewModel.getViewState().blockingFirst()
+        viewModel.onAttach()
+        val result = viewModel.getViewState().blockingFirst()
 
-    result.products shouldEqual productViewStates
-  }
+        result.products shouldEqual productViewStates
+    }
 
-  @Test
-  fun givenProductViewStatesNeverReturns_whenAttach_thenEmitDefaultProducts() {
-    every { mainModel.allProducts() } returns Single.never()
+    @Test
+    fun givenProductViewStatesNeverReturns_whenAttach_thenEmitDefaultProducts() {
+        every { mainModel.allProducts() } returns Single.never()
 
-    viewModel.onAttach()
-    val result = viewModel.getViewState().blockingFirst()
+        viewModel.onAttach()
+        val result = viewModel.getViewState().blockingFirst()
 
-    result.products.size shouldEqual 0
-  }
+        result.products.size shouldEqual 0
+    }
 }

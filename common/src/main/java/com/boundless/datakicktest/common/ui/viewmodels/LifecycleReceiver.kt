@@ -2,7 +2,7 @@ package com.boundless.datakicktest.common.ui.viewmodels
 
 interface LifecycleReceiver {
 
-  fun onAttach()
+    fun onAttach()
 
-  fun onDetach()
+    fun onDetach()
 }

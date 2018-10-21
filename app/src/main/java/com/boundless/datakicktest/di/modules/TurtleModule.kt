@@ -9,7 +9,7 @@ import dagger.Provides
 @Module
 class TurtleModule {
 
-  @Provides
-  fun provideResourceProvider(resources: Resources): ResourceProvider =
-      ResourceProviderImpl(resources)
+    @Provides
+    fun provideResourceProvider(resources: Resources): ResourceProvider =
+            ResourceProviderImpl(resources)
 }

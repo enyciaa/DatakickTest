@@ -13,31 +13,31 @@ import javax.inject.Named
 @Module
 class DataKickServiceModule {
 
-  companion object {
-    private const val DATA_KICK_SERVICE_NAMED_BASE_URL = "DATA_KICK_SERVICE_NAMED_BASE_URL"
-  }
+    companion object {
+        private const val DATA_KICK_SERVICE_NAMED_BASE_URL = "DATA_KICK_SERVICE_NAMED_BASE_URL"
+    }
 
-  @Provides
-  fun provideDataKickService(dataKickApi: DataKickApi): DataKickService =
-      DataKickService(dataKickApi)
+    @Provides
+    fun provideDataKickService(dataKickApi: DataKickApi): DataKickService =
+            DataKickService(dataKickApi)
 
-  @Provides
-  @Named(DATA_KICK_SERVICE_NAMED_BASE_URL)
-  fun provideDataKickServiceBaseUrl() = DATA_KICK_BASE_URL
+    @Provides
+    @Named(DATA_KICK_SERVICE_NAMED_BASE_URL)
+    fun provideDataKickServiceBaseUrl() = DATA_KICK_BASE_URL
 
-  @Provides
-  fun provideDataKickApi(
-      @Named(DATA_KICK_SERVICE_NAMED_BASE_URL) baseUrl: String,
-      jsonConverter: MoshiConverterFactory,
-      callAdapter: CoroutineCallAdapterFactory
-  ): DataKickApi {
-    val retrofit = Retrofit.Builder()
-        .baseUrl(baseUrl)
-        .addConverterFactory(jsonConverter)
-        .addCallAdapterFactory(callAdapter)
-        .build()
+    @Provides
+    fun provideDataKickApi(
+            @Named(DATA_KICK_SERVICE_NAMED_BASE_URL) baseUrl: String,
+            jsonConverter: MoshiConverterFactory,
+            callAdapter: CoroutineCallAdapterFactory
+    ): DataKickApi {
+        val retrofit = Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(jsonConverter)
+                .addCallAdapterFactory(callAdapter)
+                .build()
 
-    return retrofit.create(DataKickApi::class.java)
-  }
+        return retrofit.create(DataKickApi::class.java)
+    }
 
 }

@@ -10,10 +10,10 @@ import dagger.Provides
 @Module
 class ViewModelModule {
 
-  @Provides
-  fun provideMainViewModel(
-          productFetcher: ProductFetcher,
-          coroutineCtxProvider: CoroutineCtxProvider
-  ): MainViewModel =
-      MainViewModel(coroutineCtxProvider, productFetcher)
+    @Provides
+    fun provideMainViewModel(
+            productFetcher: ProductFetcher,
+            coroutineCtxProvider: CoroutineCtxProvider
+    ): MainViewModel =
+            MainViewModel(coroutineCtxProvider, productFetcher)
 }

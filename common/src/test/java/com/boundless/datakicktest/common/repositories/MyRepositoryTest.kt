@@ -12,29 +12,29 @@ import org.junit.Test
 
 class MyRepositoryTest {
 
-  private val dataKickService: DataKickService = mockk()
-  private val repository = ProductsRepository(
-      dataKickService
-  )
+    private val dataKickService: DataKickService = mockk()
+    private val repository = ProductsRepository(
+            dataKickService
+    )
 
-  @Test
-  fun givenNoCachedValue_whenFetchProducts_returnFromNetwork() {
-    val products = listOf<Product>(aFoodItemBuilder().build())
-    every { dataKickService.fetchProducts() } returns XsiNilLoader.Single.just(products)
+    @Test
+    fun givenNoCachedValue_whenFetchProducts_returnFromNetwork() {
+        val products = listOf<Product>(aFoodItemBuilder().build())
+        every { dataKickService.fetchProducts() } returns XsiNilLoader.Single.just(products)
 
-    repository.fetchProducts()
+        repository.fetchProducts()
 
-    verify { dataKickService.fetchProducts() }
-  }
+        verify { dataKickService.fetchProducts() }
+    }
 
-  @Test
-  fun givenCachedValue_whenFetchProducts_returnCachedProducts() {
-    val products = listOf<Product>(aFoodItemBuilder().build())
-    every { dataKickService.fetchProducts() } returns XsiNilLoader.Single.just(products)
-    repository.fetchProducts().blockingGet()
+    @Test
+    fun givenCachedValue_whenFetchProducts_returnCachedProducts() {
+        val products = listOf<Product>(aFoodItemBuilder().build())
+        every { dataKickService.fetchProducts() } returns XsiNilLoader.Single.just(products)
+        repository.fetchProducts().blockingGet()
 
-    repository.fetchProducts().blockingGet()
+        repository.fetchProducts().blockingGet()
 
-    verify(exactly = 1) { dataKickService.fetchProducts() }
-  }
+        verify(exactly = 1) { dataKickService.fetchProducts() }
+    }
 }

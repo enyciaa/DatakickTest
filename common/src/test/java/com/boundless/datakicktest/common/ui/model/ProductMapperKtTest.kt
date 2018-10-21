@@ -13,38 +13,38 @@ import org.junit.Test
 
 class ProductMapperKtTest {
 
-  @Test
-  fun listOfMixedProductsMappedCorrectly() {
-    val foodItem = aFoodItemBuilder().build()
-    val book = aBookBuilder().build()
-    val products = listOf(foodItem, book)
+    @Test
+    fun listOfMixedProductsMappedCorrectly() {
+        val foodItem = aFoodItemBuilder().build()
+        val book = aBookBuilder().build()
+        val products = listOf(foodItem, book)
 
-    val result = products.mapToProductViewStates()
+        val result = products.mapToProductViewStates()
 
-    result.size shouldEqual 2
-    result[0] shouldBeInstanceOf FoodItemViewState::class.java
-    result[1] shouldBeInstanceOf BookItemViewState::class.java
-  }
+        result.size shouldEqual 2
+        result[0] shouldBeInstanceOf FoodItemViewState::class.java
+        result[1] shouldBeInstanceOf BookItemViewState::class.java
+    }
 
-  @Test
-  fun listOfFoodItemProductsMappedCorrectly() {
-    val foodItemResponse = aFoodItemBuilder().build()
-    val products = listOf(foodItemResponse)
+    @Test
+    fun listOfFoodItemProductsMappedCorrectly() {
+        val foodItemResponse = aFoodItemBuilder().build()
+        val products = listOf(foodItemResponse)
 
-    val result = products.mapToProductViewStates()
+        val result = products.mapToProductViewStates()
 
-    val resultFoodItem = result[0] as FoodItemViewState
-    resultFoodItem.name shouldEqual FoodItemBuilder.DEFAULT_NAME
-  }
+        val resultFoodItem = result[0] as FoodItemViewState
+        resultFoodItem.name shouldEqual FoodItemBuilder.DEFAULT_NAME
+    }
 
-  @Test
-  fun listOfBookProductsMappedCorrectly() {
-    val bookResponse = aBookBuilder().build()
-    val products = listOf(bookResponse)
+    @Test
+    fun listOfBookProductsMappedCorrectly() {
+        val bookResponse = aBookBuilder().build()
+        val products = listOf(bookResponse)
 
-    val result = products.mapToProductViewStates()
+        val result = products.mapToProductViewStates()
 
-    val resultBook = result[0] as BookItemViewState
-    resultBook.name shouldEqual BookBuilder.DEFAULT_NAME
-  }
+        val resultBook = result[0] as BookItemViewState
+        resultBook.name shouldEqual BookBuilder.DEFAULT_NAME
+    }
 }

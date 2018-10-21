@@ -19,41 +19,43 @@ import javax.inject.Inject
 
 class MainActivity : MotherActivity() {
 
-  companion object {
-    fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
-  }
-
-  @Inject lateinit var viewModel: MainViewModel
-
-  private lateinit var binding: MainActivityBinding
-
-  private val listItemBinding: OnItemBind<ProductViewState> = OnItemBind { itemBinding, _, item ->
-    when (item) {
-      is FoodItemViewState -> itemBinding.set(BR.viewState, R.layout.foods_item)
-      is BookItemViewState -> itemBinding.set(BR.viewState, R.layout.book_item)
-      else -> { /* Do nothing */ }
+    companion object {
+        fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
     }
-  }
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
-    binding.listItemBinding = listItemBinding
-    setSupportActionBar(binding.toolbar)
+    @Inject
+    lateinit var viewModel: MainViewModel
 
-    binding.filterByBooks.setOnClickListener { viewModel.filterByBooks() }
-    binding.filterByFood.setOnClickListener { viewModel.filterByFood() }
-    binding.showAll.setOnClickListener { viewModel.showAllProducts() }
-  }
+    private lateinit var binding: MainActivityBinding
 
-  override fun provideLifecycleReceivers(): List<LifecycleReceiver> = listOf(viewModel)
+    private val listItemBinding: OnItemBind<ProductViewState> = OnItemBind { itemBinding, _, item ->
+        when (item) {
+            is FoodItemViewState -> itemBinding.set(BR.viewState, R.layout.foods_item)
+            is BookItemViewState -> itemBinding.set(BR.viewState, R.layout.book_item)
+            else                 -> { /* Do nothing */
+            }
+        }
+    }
 
-  override fun onResume() {
-    super.onResume()
-    viewModel.viewStateUpdatedCallback = this::renderViewState
-  }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
+        binding.listItemBinding = listItemBinding
+        setSupportActionBar(binding.toolbar)
 
-  private fun renderViewState(mainViewState: MainViewState) {
-    binding.viewState = mainViewState
-  }
+        binding.filterByBooks.setOnClickListener { viewModel.filterByBooks() }
+        binding.filterByFood.setOnClickListener { viewModel.filterByFood() }
+        binding.showAll.setOnClickListener { viewModel.showAllProducts() }
+    }
+
+    override fun provideLifecycleReceivers(): List<LifecycleReceiver> = listOf(viewModel)
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.viewStateUpdatedCallback = this::renderViewState
+    }
+
+    private fun renderViewState(mainViewState: MainViewState) {
+        binding.viewState = mainViewState
+    }
 }

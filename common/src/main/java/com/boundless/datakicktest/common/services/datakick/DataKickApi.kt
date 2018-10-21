@@ -9,6 +9,6 @@ const val DATA_KICK_BASE_URL = "https://www.datakick.org/api/"
 
 interface DataKickApi {
 
-  @GET("items")
-  fun fetchItems(): Call<List<RawDataKickResponse>>
+    @GET("items")
+    fun fetchItems(): Call<List<RawDataKickResponse>>
 }

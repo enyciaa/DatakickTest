@@ -8,7 +8,7 @@ import dagger.Provides
 @Module
 class AndroidSystemModule {
 
-  @Provides
-  fun provideResources(application: Application): Resources =
-      application.resources
+    @Provides
+    fun provideResources(application: Application): Resources =
+            application.resources
 }

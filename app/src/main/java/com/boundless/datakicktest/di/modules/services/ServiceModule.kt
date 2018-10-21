@@ -7,17 +7,17 @@ import dagger.Provides
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 @Module(
-    includes = [
-      DataKickServiceModule::class
-    ]
+        includes = [
+            DataKickServiceModule::class
+        ]
 )
 class ServiceModule {
 
-  @Provides
-  fun provideRetrofitConverterFactory(): MoshiConverterFactory =
-      MoshiConverterFactory.create()
+    @Provides
+    fun provideRetrofitConverterFactory(): MoshiConverterFactory =
+            MoshiConverterFactory.create()
 
-  @Provides
-  fun provideCoreroutineCallAdapter(): CoroutineCallAdapterFactory =
-      CoroutineCallAdapterFactory()
+    @Provides
+    fun provideCoreroutineCallAdapter(): CoroutineCallAdapterFactory =
+            CoroutineCallAdapterFactory()
 }

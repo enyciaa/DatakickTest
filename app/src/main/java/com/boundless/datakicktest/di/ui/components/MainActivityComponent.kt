@@ -12,19 +12,21 @@ import dagger.android.ContributesAndroidInjector
 @Module
 interface MainActivityAndroidInjectorModule {
 
-  @PerActivity
-  @ContributesAndroidInjector(modules = [
-    MainActivityModule::class,
-    ActivityScopedModule::class,
-    ViewModelModule::class
-  ])
-  fun provideMainActivity(): MainActivity
+    @PerActivity
+    @ContributesAndroidInjector(
+            modules = [
+                MainActivityModule::class,
+                ActivityScopedModule::class,
+                ViewModelModule::class
+            ]
+    )
+    fun provideMainActivity(): MainActivity
 }
 
 @Module
 abstract class MainActivityModule {
 
-  @Binds
-  abstract fun provideActivity(activity: MainActivity): MotherActivity
+    @Binds
+    abstract fun provideActivity(activity: MainActivity): MotherActivity
 
 }

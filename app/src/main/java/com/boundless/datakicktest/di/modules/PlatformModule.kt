@@ -11,13 +11,13 @@ import dagger.Provides
 @Module
 class PlatformModule {
 
-  @Provides
-  @PerApplication
-  fun provideCoreroutineContext(): CoroutineCtxProvider =
-      CoroutineCtxProviderImpl()
+    @Provides
+    @PerApplication
+    fun provideCoreroutineContext(): CoroutineCtxProvider =
+            CoroutineCtxProviderImpl()
 
-  @Provides
-  @PerApplication
-  fun provideErrorHandler(): ErrorLogger =
-          ErrorLoggerImpl()
+    @Provides
+    @PerApplication
+    fun provideErrorHandler(): ErrorLogger =
+            ErrorLoggerImpl()
 }

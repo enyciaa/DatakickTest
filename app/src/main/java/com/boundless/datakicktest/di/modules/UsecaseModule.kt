@@ -8,9 +8,9 @@ import dagger.Provides
 @Module
 class UsecaseModule {
 
-  @Provides
-  fun productFetcher(
-      productsRepository: ProductsRepository
-  ): ProductFetcher =
-          ProductFetcher(productsRepository)
+    @Provides
+    fun productFetcher(
+            productsRepository: ProductsRepository
+    ): ProductFetcher =
+            ProductFetcher(productsRepository)
 }

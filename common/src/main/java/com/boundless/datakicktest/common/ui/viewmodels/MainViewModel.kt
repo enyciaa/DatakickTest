@@ -20,7 +20,7 @@ class MainViewModel(
     }
 
     fun showAllProducts() {
-        launch(coroutineCtxProvider.UI, parent = coreroutineManager)  {
+        launch(coroutineCtxProvider.UI, parent = coreroutineManager) {
             try {
                 val allProducts = withContext(coroutineCtxProvider.commonPool) { productFetcher.allProducts() }
                 emitViewState(lastViewState.withProducts(allProducts))
@@ -32,7 +32,7 @@ class MainViewModel(
     }
 
     fun filterByBooks() {
-        launch(coroutineCtxProvider.commonPool, parent = coreroutineManager)  {
+        launch(coroutineCtxProvider.commonPool, parent = coreroutineManager) {
             try {
                 val books = withContext(coroutineCtxProvider.commonPool) { productFetcher.books() }
                 emitViewState(lastViewState.withProducts(books))
@@ -44,7 +44,7 @@ class MainViewModel(
     }
 
     fun filterByFood() {
-        launch(coroutineCtxProvider.commonPool, parent = coreroutineManager)  {
+        launch(coroutineCtxProvider.commonPool, parent = coreroutineManager) {
             try {
                 val food = withContext(coroutineCtxProvider.commonPool) { productFetcher.food() }
                 emitViewState(lastViewState.withProducts(food))

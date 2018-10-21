@@ -8,25 +8,25 @@ import dagger.android.AndroidInjection
 
 abstract class MotherActivity : AppCompatActivity() {
 
-  private val lifecycleReceivers: MutableList<LifecycleReceiver> = mutableListOf()
+    private val lifecycleReceivers: MutableList<LifecycleReceiver> = mutableListOf()
 
-  abstract fun provideLifecycleReceivers(): List<LifecycleReceiver>
+    abstract fun provideLifecycleReceivers(): List<LifecycleReceiver>
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    AndroidInjection.inject(this)
-    super.onCreate(savedInstanceState)
-    lifecycleReceivers.addAll(provideLifecycleReceivers())
-  }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
+        super.onCreate(savedInstanceState)
+        lifecycleReceivers.addAll(provideLifecycleReceivers())
+    }
 
-  @CallSuper
-  override fun onResume() {
-    super.onResume()
-    lifecycleReceivers.forEach { it.onAttach() }
-  }
+    @CallSuper
+    override fun onResume() {
+        super.onResume()
+        lifecycleReceivers.forEach { it.onAttach() }
+    }
 
-  @CallSuper
-  override fun onPause() {
-    super.onPause()
-    lifecycleReceivers.forEach { it.onDetach() }
-  }
+    @CallSuper
+    override fun onPause() {
+        super.onPause()
+        lifecycleReceivers.forEach { it.onDetach() }
+    }
 }

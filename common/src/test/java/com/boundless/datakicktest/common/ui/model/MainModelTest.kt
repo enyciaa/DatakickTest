@@ -13,20 +13,20 @@ import org.junit.Test
 
 class MainModelTest {
 
-  private val coreroutineContextProvider = TestCoroutineCtxProvider()
-  private val productsRepository: ProductsRepository = mockk()
-  private val model = ProductFetcher(
-          coreroutineContextProvider,
-          productsRepository
-  )
+    private val coreroutineContextProvider = TestCoroutineCtxProvider()
+    private val productsRepository: ProductsRepository = mockk()
+    private val model = ProductFetcher(
+            coreroutineContextProvider,
+            productsRepository
+    )
 
-  @Test
-  fun givenProducts_whenFetchProducts_fetchProductsFromRepository() {
-    val products = listOf<Product>(aFoodItemBuilder().build())
-    every { productsRepository.fetchProducts() } returns Single.just(products)
+    @Test
+    fun givenProducts_whenFetchProducts_fetchProductsFromRepository() {
+        val products = listOf<Product>(aFoodItemBuilder().build())
+        every { productsRepository.fetchProducts() } returns Single.just(products)
 
-    model.allProducts()
+        model.allProducts()
 
-    verify { productsRepository.fetchProducts() }
-  }
+        verify { productsRepository.fetchProducts() }
+    }
 }

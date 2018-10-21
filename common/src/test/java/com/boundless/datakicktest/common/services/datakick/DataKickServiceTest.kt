@@ -13,19 +13,19 @@ import org.junit.Test
 
 class DataKickServiceTest {
 
-  private val dataKickApi: DataKickApi = mockk()
-  private val service = DataKickService(dataKickApi)
+    private val dataKickApi: DataKickApi = mockk()
+    private val service = DataKickService(dataKickApi)
 
-  @Test
-  fun givenApiResult_whenFetched_returnProducts() {
-    val brandName = "kellogs"
-    val foodItemResponse = aRawDataKickResponseBuilder().withBrandName(brandName).build()
-    val apiResults: List<RawDataKickResponse> = listOf(foodItemResponse)
-    every { dataKickApi.fetchItems() } returns XsiNilLoader.Single.just(apiResults)
-    val expectedResult: List<Product> = listOf(aFoodItemBuilder().withBrandName(brandName).build())
+    @Test
+    fun givenApiResult_whenFetched_returnProducts() {
+        val brandName = "kellogs"
+        val foodItemResponse = aRawDataKickResponseBuilder().withBrandName(brandName).build()
+        val apiResults: List<RawDataKickResponse> = listOf(foodItemResponse)
+        every { dataKickApi.fetchItems() } returns XsiNilLoader.Single.just(apiResults)
+        val expectedResult: List<Product> = listOf(aFoodItemBuilder().withBrandName(brandName).build())
 
-    val result = service.fetchProducts().blockingGet()
+        val result = service.fetchProducts().blockingGet()
 
-    result shouldEqual expectedResult
-  }
+        result shouldEqual expectedResult
+    }
 }
