@@ -1,6 +1,6 @@
 package com.boundless.datakicktest.di.ui.modules
 
-import com.boundless.datakicktest.common.CoroutineCtxProvider
+import com.boundless.datakicktest.common.DispatcherProvider
 import com.boundless.datakicktest.common.ErrorLogger
 import com.boundless.datakicktest.common.usecases.ProductFetcher
 import com.boundless.datakicktest.common.ui.viewmodels.MainViewModel
@@ -13,7 +13,7 @@ class ViewModelModule {
     @Provides
     fun provideMainViewModel(
             productFetcher: ProductFetcher,
-            coroutineCtxProvider: CoroutineCtxProvider
+            dispatcherProvider: DispatcherProvider
     ): MainViewModel =
-            MainViewModel(coroutineCtxProvider, productFetcher)
+            MainViewModel(dispatcherProvider, productFetcher)
 }

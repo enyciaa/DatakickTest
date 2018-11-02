@@ -40,6 +40,7 @@ dependencies {
     implementation(project(':common'))
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coreroutinesVersion}"
     implementation "com.github.enyciaa:Jerboa:${jerboaVersion}"
     implementation "com.github.enyciaa:Aardvark:${aardvarkVersion}"
     implementation networkingDependencies

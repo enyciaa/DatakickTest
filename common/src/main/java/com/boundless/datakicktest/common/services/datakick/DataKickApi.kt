@@ -1,7 +1,6 @@
 package com.boundless.datakicktest.common.services.datakick
 
 import com.boundless.datakicktest.common.services.datakick.entities.RawDataKickResponse
-import kotlinx.coroutines.experimental.Deferred
 import retrofit2.Call
 import retrofit2.http.GET
 

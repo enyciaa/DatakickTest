@@ -14,8 +14,6 @@ dependencies {
     implementation(project(':common'))
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coreroutinesVersion}"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coreroutinesVersion}"
     implementation "com.github.enyciaa:Aardvark:${aardvarkVersion}"
 
     implementation "com.google.dagger:dagger-android:${daggerVersion}"

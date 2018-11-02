@@ -11,6 +11,7 @@ kotlin {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coreroutinesVersion}"
     implementation "com.github.enyciaa:Jerboa:${jerboaVersion}"
     implementation networkingDependencies
 

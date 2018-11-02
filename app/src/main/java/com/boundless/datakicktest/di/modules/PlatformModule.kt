@@ -1,7 +1,7 @@
 package com.boundless.datakicktest.di.modules
 
-import com.boundless.datakicktest.CoroutineCtxProviderImpl
-import com.boundless.datakicktest.common.CoroutineCtxProvider
+import com.boundless.datakicktest.DispatcherProviderImpl
+import com.boundless.datakicktest.common.DispatcherProvider
 import com.boundless.aardvark.libraryhelpers.dagger.PerApplication
 import com.boundless.datakicktest.ErrorLoggerImpl
 import com.boundless.datakicktest.common.ErrorLogger
@@ -13,8 +13,8 @@ class PlatformModule {
 
     @Provides
     @PerApplication
-    fun provideCoreroutineContext(): CoroutineCtxProvider =
-            CoroutineCtxProviderImpl()
+    fun provideCoreroutineContext(): DispatcherProvider =
+            DispatcherProviderImpl()
 
     @Provides
     @PerApplication
